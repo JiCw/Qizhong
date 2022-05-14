@@ -26,4 +26,25 @@ os.system("cat 2007_train.txt 2007_val.txt 2007_test.txt 2012_train.txt 2012_val
 计算map,我们需要两个python文件：
 * voc_eval.py
 * compute_mAP.py
+其中voc_eval.py是github上开源项目的代码voc_eval.py；compute_mAP.py需要自己编写  
+compute_mAP.py  
+```
+from voc_eval import voc_eval
+import os
+map_ = 0
+# classnames填写训练模型时定义的类别名称
+classnames = ['aeroplane','bicycle','bird','boat','bottle','bus','car','cat','chair','cow','diningtable','dog','horse','motorbike','person','pottedplant','sheep','sofa','train','tvmonitor']
+for classname in classnames:
+    ap = voc_eval('../results/{}.txt', '../data/VOC/VOCdevkit/VOC2007/Annotations/{}.xml', '../data/VOC/2007_test.txt', classname, '.')
+    map_ += ap
+    #print ('%-20s' % (classname + '_ap:')+'%s' % ap)
+    print ('%s' % (classname + '_ap:')+'%s' % ap)
+# 删除临时的dump文件
+if(os.path.exists("annots.pkl")):
+    os.remove("annots.pkl")
+    print("cache file:annots.pkl has been removed!")
+# 打印map
+map = map_/len(classnames)
+#print ('%-20s' % 'map:' + '%s' % map)
+print ('map:%s' % map)
 

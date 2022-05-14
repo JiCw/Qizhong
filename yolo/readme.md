@@ -22,4 +22,8 @@ os.system("cat 2007_train.txt 2007_val.txt 2007_test.txt 2012_train.txt 2012_val
 修改配置文件voc.data和yolov3-voc.cfg  
 下载权重文件到darknet文件中：wget https://pjreddie.com/media/files/darknet53.conv.74   
 开始训练：./darknet detector train cfg/voc.data cfg/yolov3-voc.cfg darknet53.conv.74   
+## 计算mAP
+计算map,我们需要两个python文件：
+* voc_eval.py
+* compute_mAP.py
 

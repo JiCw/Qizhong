@@ -27,7 +27,7 @@ os.system("cat 2007_train.txt 2007_val.txt 2007_test.txt 2012_train.txt 2012_val
 * voc_eval.py
 * compute_mAP.py
 其中voc_eval.py是github上开源项目的代码voc_eval.py；compute_mAP.py需要自己编写  
-compute_mAP.py  
+### compute_mAP.py  
 ```
 from voc_eval import voc_eval
 import os
@@ -47,4 +47,4 @@ if(os.path.exists("annots.pkl")):
 map = map_/len(classnames)
 #print ('%-20s' % 'map:' + '%s' % map)
 print ('map:%s' % map)
-
+```
